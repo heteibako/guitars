@@ -7,6 +7,18 @@ const cors = Cors({
   methods: ['GET', 'POST', 'HEAD'],
 });
 
+function runMiddleware(req, res, fn) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result) => {
+      if (result instanceof Error) {
+        return reject(result);
+      }
+
+      return resolve(result);
+    });
+  });
+}
+
 connectDB();
 
 export default async (req, res, next) => {
@@ -14,6 +26,8 @@ export default async (req, res, next) => {
   switch (method) {
     case 'GET':
       try {
+        // Run the middleware
+        await runMiddleware(req, res, cors);
         const guitars = await Guitar.find({});
         res.status(200).json({ success: true, data: guitars });
       } catch (error) {
@@ -23,6 +37,8 @@ export default async (req, res, next) => {
 
     case 'POST':
       try {
+        // Run the middleware
+        await runMiddleware(req, res, cors);
         const guitar = await Guitar.create({ name: req.body.name });
         res.json(guitar);
       } catch (error) {
