@@ -24,9 +24,12 @@ const Guitars = ({ guitars }) => {
 };
 
 Guitars.getInitialProps = async (ctx) => {
-  const res = await axios.get('/api/guitars');
-
-  return { guitars: res.data };
+  try {
+    const res = await axios.get('http://localhost:3000/api/guitars');
+    return { guitars: res.data };
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default Guitars;
