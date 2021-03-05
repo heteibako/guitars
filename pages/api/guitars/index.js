@@ -1,5 +1,11 @@
 import connectDB from '../../../utils/connectDB';
 import Guitar from '../../../models/Guitar';
+import Cors from 'cors';
+
+// Initializing the cors middleware
+const cors = Cors({
+  methods: ['GET', 'POST', 'HEAD'],
+});
 
 connectDB();
 
