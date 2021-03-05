@@ -6,7 +6,7 @@ module.exports = {
     return [
       {
         source: '/api/:path*',
-        destination: 'https://guitars.vercel.app/api/*',
+        destination: 'https://guitars.vercel.app/*',
       },
     ];
   },
