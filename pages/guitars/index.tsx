@@ -27,7 +27,7 @@ const Guitars: FC<GuitarProps> = ({ guitars }) => {
       <ul>
         {guitars.data.map((guitar: Guitar) => (
           <li key={guitar._id}>
-            <Link href='/guitars/[id]' as={`/guitars/${guitar._id}`}>
+            <Link href='/guitars/[id]' as={`${process.env.API_URL}/guitars/${guitar._id}`}>
               <a> {guitar.name}</a>
             </Link>
           </li>

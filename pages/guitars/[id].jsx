@@ -12,7 +12,7 @@ const Guitar = ({ guitar }) => {
 
 export async function getServerSideProps(ctx) {
   const { id } = ctx.query;
-  const res = await axios.get(`${process.env}/api/guitars/${id}`);
+  const res = await axios.get(`${process.env.API_URL}/api/guitars/${id}`);
   return { props: { guitar: res.data } };
 }
 
