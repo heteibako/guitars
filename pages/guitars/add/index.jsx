@@ -9,7 +9,6 @@ const Add = () => {
       name,
     };
     useAddGuitar(data);
-    console.log(data);
   };
   return (
     <div>
