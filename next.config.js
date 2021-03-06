@@ -1,6 +1,7 @@
 module.exports = {
   env: {
-    MONGO_URI: 'mongodb://localhost:27017/guitarstore',
+    MONGO_URI:
+      'mongodb+srv://heteibako:Ib5flzTUvKWQM3XY@cluster0-z4t2w.mongodb.net/guitarstore?retryWrites=true&w=majority',
   },
   api: {
     bodyParser: false,
