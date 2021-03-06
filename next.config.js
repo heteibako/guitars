@@ -7,6 +7,7 @@ module.exports = {
   env: {
     MONGO_URI: process.env.MONGO_URI,
   },
+  plugins: [['styled-components', { ssr: true, displayName: true, preprocess: false }]],
 };
 
 const withNextEnv = nextEnv();
