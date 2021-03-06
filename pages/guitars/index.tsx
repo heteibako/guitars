@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import axios from 'axios';
 
-const Guitars = ({ guitars }) => {
+interface GuitarProps {
+  guitars: {
+    data: [];
+  };
+}
+interface Guitar {
+    name: string,
+    _id: string
+}
+
+const Guitars: FC<GuitarProps> = ({ guitars }) => {
   return (
     <div>
       <Head>
@@ -15,7 +25,7 @@ const Guitars = ({ guitars }) => {
         <a>Add</a>
       </Link>
       <ul>
-        {guitars.data.map((guitar) => (
+        {guitars.data.map((guitar: Guitar) => (
           <li key={guitar._id}>
             <Link href='/guitars/[id]' as={`/guitars/${guitar._id}`}>
               <a> {guitar.name}</a>
