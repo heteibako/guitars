@@ -38,7 +38,7 @@ const Guitars: FC<GuitarProps> = ({ guitars }) => {
 };
 
 export async function getServerSideProps(ctx) {
-  const res = await axios.get('http://localhost:3000/api/guitars/');
+  const res = await axios.get(`${process.env.API_URL}/api/guitars/`);
   return { props: { guitars: res.data } };
 }
 
