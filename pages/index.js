@@ -1,9 +1,10 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <motion.div className={styles.container} exit={{ opacity: 0 }}>
       <Head>
         <title>Guitar Store | NextJS App</title>
         <link rel='icon' href='/favicon.ico' />
@@ -51,6 +52,6 @@ export default function Home() {
           Powered by <img src='/vercel.svg' alt='Vercel Logo' className={styles.logo} />
         </a>
       </footer>
-    </div>
+    </motion.div>
   );
 }

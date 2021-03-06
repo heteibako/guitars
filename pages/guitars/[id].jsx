@@ -1,12 +1,13 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 
 const Guitar = ({ guitar }) => {
   return (
-    <div>
+    <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <h1>Guitar {guitar.name}</h1>
-    </div>
+    </motion.div>
   );
 };
 

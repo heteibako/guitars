@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import axios from 'axios';
-
+import {motion} from 'framer-motion'
 interface GuitarProps {
   guitars: {
     data: [];
@@ -15,7 +15,7 @@ interface Guitar {
 
 const Guitars: FC<GuitarProps> = ({ guitars }) => {
   return (
-    <div>
+    <motion.div exit={{opacity: 0}}  initial={{opacity: 0}} animate={{opacity: 1}}>
       <Head>
         <title>Guitar store | New guitars</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
@@ -24,7 +24,7 @@ const Guitars: FC<GuitarProps> = ({ guitars }) => {
       <Link href='/guitars/add'>
         <a>Add</a>
       </Link>
-      <ul>
+      <motion.ul exit={{opacity: 0}}>
         {guitars.data.map((guitar: Guitar) => (
           <li key={guitar._id}>
             <Link href='/guitars/[id]' as={`/guitars/${guitar._id}`}>
@@ -32,8 +32,8 @@ const Guitars: FC<GuitarProps> = ({ guitars }) => {
             </Link>
           </li>
         ))}
-      </ul>
-    </div>
+      </motion.ul>
+    </motion.div>
   );
 };
 
