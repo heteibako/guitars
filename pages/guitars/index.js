@@ -23,13 +23,18 @@ const Guitars = ({ guitars }) => {
   );
 };
 
-Guitars.getInitialProps = async (ctx) => {
-  try {
-    const res = await axios.get('http://localhost:3000/api/guitars');
-    return { guitars: res.data };
-  } catch (error) {
-    console.log(error);
-  }
-};
+// Guitars.getInitialProps = async (ctx) => {
+//   try {
+//     const res = await axios.get('http://localhost:3000/api/guitars');
+//     return { guitars: res.data };
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+export async function getServerSideProps(ctx) {
+  const res = await axios.get('http://localhost:3000/api/guitars');
+  return { props: { guitars: res.data } };
+}
 
 export default Guitars;
