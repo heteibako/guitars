@@ -1,10 +1,11 @@
+const nextEnv = require('next-env');
+const dotenvLoad = require('dotenv-load');
+
+dotenvLoad();
+
 module.exports = {
   env: {
-    MONGO_URI:
-      'mongodb+srv://heteibako:Ib5flzTUvKWQM3XY@cluster0-z4t2w.mongodb.net/guitarstore?retryWrites=true&w=majority',
-  },
-  api: {
-    bodyParser: false,
+    MONGO_URI: process.env.MONGO_URI,
   },
   async headers() {
     return [
@@ -25,3 +26,6 @@ module.exports = {
     ];
   },
 };
+
+const withNextEnv = nextEnv();
+module.exports = withNextEnv();

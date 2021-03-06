@@ -13,7 +13,7 @@ const Guitar = ({ guitar }) => {
 export async function getServerSideProps(ctx) {
   const { id } = ctx.query;
   const res = await axios.get(`http://localhost:3000/api/guitars/${id}`);
-  return { props: { guitar: res.data.data } };
+  return { props: { guitar: res.data } };
 }
 
 export default Guitar;

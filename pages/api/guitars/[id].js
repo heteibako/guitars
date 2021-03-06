@@ -12,7 +12,7 @@ const handler = nc()
     try {
       const { id } = req.query;
       const guitar = await Guitar.findById(id);
-      res.json({ success: true, data: guitar });
+      res.json(guitar);
     } catch (error) {
       console.log(error);
     }
