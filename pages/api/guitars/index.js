@@ -20,9 +20,9 @@ const handler = nc()
   })
   .post(async (req, res) => {
     try {
-      const { name } = req.body;
+      const { body, name, strings, neck, neckProfile, pickups } = req.body;
 
-      const guitar = await Guitar.create({ name });
+      const guitar = await Guitar.create({ body, name, strings, neck, neckProfile, pickups });
       res.json(guitar);
     } catch (error) {
       console.log(req.body);

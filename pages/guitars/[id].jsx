@@ -7,6 +7,7 @@ const Guitar = ({ guitar }) => {
   return (
     <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <h1>Guitar {guitar.name}</h1>
+      <p>{guitar.body}</p>
     </motion.div>
   );
 };

@@ -1,9 +1,6 @@
 import axios from 'axios';
 
-export const useAddGuitar = async (data) => {
-  try {
-    await axios.post(`/api/guitars/`, data);
-  } catch (error) {
-    console.log(error);
-  }
+export const useAddGuitar = (data) => {
+  axios.post(`/api/guitars/`, data);
+  console.log(data);
 };
