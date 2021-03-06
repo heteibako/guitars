@@ -2,6 +2,9 @@ module.exports = {
   env: {
     MONGO_URI: 'mongodb://localhost:27017/guitarstore',
   },
+  api: {
+    bodyParser: false,
+  },
   async headers() {
     return [
       {
