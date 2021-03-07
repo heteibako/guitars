@@ -14,12 +14,12 @@ export const Wrapper = styled.section`
     flex-direction: ${(props) => (props.stacked ? 'column' : 'row')};
   }
   @media ${device.mobileS} {
-    flex-direction: ${(props) => (props.stacked ? 'column' : 'row')};
+    flex-direction: ${(props) => (props.stacked ? 'row' : 'column')};
   }
   @media ${device.mobileM} {
-    flex-direction: ${(props) => (props.stacked ? 'column' : 'row')};
+    flex-direction: ${(props) => (props.stacked ? 'row' : 'column')};
   }
   @media ${device.mobileL} {
-    flex-direction: ${(props) => (props.stacked ? 'column' : 'row')};
+    flex-direction: ${(props) => (props.stacked ? 'row' : 'column')};
   }
 `;
