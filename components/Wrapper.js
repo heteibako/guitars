@@ -6,11 +6,12 @@ export const Wrapper = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: ${(props) => (props.stacked ? 'row' : 'column')};
 
   @media ${device.laptopL} {
     flex-direction: ${(props) => (props.stacked ? 'row' : 'column')};
   }
-  @media ${device.laptopM} {
+  @media ${device.laptop} {
     flex-direction: ${(props) => (props.stacked ? 'row' : 'column')};
   }
   @media ${device.mobileS} {
