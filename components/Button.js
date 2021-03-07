@@ -5,9 +5,16 @@ export const Button = styled.button`
   text-transform: uppercase;
   text-align: center;
   border: 1px solid black;
-  padding: 0.5rem 8rem;
+  padding: 0.5rem 3rem;
   color: black;
   font-weight: 700;
   background-color: white;
   outline: none;
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: black;
+    color: white;
+  }
 `;
