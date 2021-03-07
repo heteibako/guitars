@@ -6,21 +6,9 @@ export const Wrapper = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: ${(props) => (props.stacked ? 'row' : 'column')};
+  flex-direction: ${(props) => (props.stacked ? 'column' : 'row')};
 
-  @media ${device.laptopL} {
+  @media ${device.tablet} {
     flex-direction: ${(props) => (props.stacked ? 'row' : 'column')};
-  }
-  @media ${device.laptop} {
-    flex-direction: ${(props) => (props.stacked ? 'row' : 'column')};
-  }
-  @media ${device.mobileS} {
-    flex-direction: ${(props) => (props.stacked ? 'column' : 'row')};
-  }
-  @media ${device.mobileM} {
-    flex-direction: ${(props) => (props.stacked ? 'column' : 'row')};
-  }
-  @media ${device.mobileL} {
-    flex-direction: ${(props) => (props.stacked ? 'column' : 'row')};
   }
 `;
