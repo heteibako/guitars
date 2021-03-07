@@ -1,22 +1,25 @@
 import styled from 'styled-components';
 import { device } from './helpers/deviceSizes';
+
 export const Wrapper = styled.section`
-  padding: 4em;
+  padding: 2em;
   display: flex;
+  justify-content: center;
+  align-items: center;
 
   @media ${device.laptopL} {
-    flex-direction: row;
+    flex-direction: ${(props) => (props.stacked ? 'column' : 'row')};
   }
   @media ${device.laptopM} {
-    flex-direction: row;
+    flex-direction: ${(props) => (props.stacked ? 'column' : 'row')};
   }
   @media ${device.mobileS} {
-    flex-direction: column;
+    flex-direction: ${(props) => (props.stacked ? 'column' : 'row')};
   }
   @media ${device.mobileM} {
-    flex-direction: column;
+    flex-direction: ${(props) => (props.stacked ? 'column' : 'row')};
   }
   @media ${device.mobileL} {
-    flex-direction: column;
+    flex-direction: ${(props) => (props.stacked ? 'column' : 'row')};
   }
 `;
