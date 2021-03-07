@@ -11,7 +11,7 @@ const Guitar = ({ guitar: { body, name, strings, neck, neckProfile, pickups, ima
     <Wrapper>
       <HalfColumn center>
         <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-          <Image src={`/images/${image}.png`} alt='me' width='200' height='600' />
+          <Image src={`/static/images/${image}.png`} alt='me' width='200' height='600' />
           <h1>{name}</h1>
         </motion.div>
       </HalfColumn>
