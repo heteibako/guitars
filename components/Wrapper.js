@@ -8,10 +8,10 @@ export const Wrapper = styled.section`
   align-items: center;
 
   @media ${device.laptopL} {
-    flex-direction: ${(props) => (props.stacked ? 'column' : 'row')};
+    flex-direction: ${(props) => (props.stacked ? 'row' : 'column')};
   }
   @media ${device.laptopM} {
-    flex-direction: ${(props) => (props.stacked ? 'column' : 'row')};
+    flex-direction: ${(props) => (props.stacked ? 'row' : 'column')};
   }
   @media ${device.mobileS} {
     flex-direction: ${(props) => (props.stacked ? 'column' : 'row')};

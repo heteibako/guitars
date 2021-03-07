@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 const Guitar = ({ guitar: { body, name, strings, neck, neckProfile, pickups, image } }) => {
   return (
-    <Wrapper>
+    <Wrapper stacked>
       <HalfColumn center>
         <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <Image src={`/static/images/${image}.png`} alt='me' width='200' height='600' />
