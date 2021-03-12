@@ -15,7 +15,11 @@ const Guitar = ({ guitar: { body, name, strings, neck, neckProfile, pickups, ima
   controls.start({
     y: '100%',
     backgroundColor: '#000',
+    transform: 45,
     transition: { duration: 0.5, ease: 'easeOut' },
+    transitionEnd: {
+      height: 0,
+    },
   });
   return (
     <Wrapper stacked>
@@ -47,7 +51,9 @@ const Guitar = ({ guitar: { body, name, strings, neck, neckProfile, pickups, ima
           initial={{ opacity: 0 }}
           transition={{ delay: 0.3, ease: 'easeInOut' }}
           animate={{ opacity: 1, translateY: 20 }}>
-          <Image src={`/static/images/${image}.png`} alt={name} width='200' height='600' />
+          <motion.div whileHover={{ scale: 1.05, ease: 'easeInOut' }} transition={{ type: 'spring', duration: 1 }}>
+            <Image src={`/static/images/${image}.png`} alt={name} width='200' height='600' />
+          </motion.div>
         </motion.div>
       </HalfColumn>
       <HalfColumn>
