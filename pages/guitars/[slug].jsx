@@ -9,8 +9,9 @@ import { HalfColumn } from '../../components/HalfColumn';
 import Image from 'next/image';
 import { Button } from '../../components/Button';
 import { BackdropHeading } from '../../components/BackdropHeading';
+import ReactContentfulImage from 'react-contentful-image';
 
-const Guitar = ({ guitar: { body, name, strings, neck, neckProfile, pickups, image } }) => {
+const Guitar = ({ guitar: { ...fields } }) => {
   const controls = useAnimation();
   controls.start({
     y: '100%',
@@ -21,6 +22,7 @@ const Guitar = ({ guitar: { body, name, strings, neck, neckProfile, pickups, ima
       height: 0,
     },
   });
+
   return (
     <Wrapper stacked>
       <motion.div
@@ -41,10 +43,10 @@ const Guitar = ({ guitar: { body, name, strings, neck, neckProfile, pickups, ima
         animate={controls}
       />
       <Head>
-        <title>{name} | NextJS App</title>
+        <title>{fields?.guitarName} | NextJS App</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <BackdropHeading>{name}</BackdropHeading>
+      <BackdropHeading>{fields?.guitarName}</BackdropHeading>
       <HalfColumn center>
         <motion.div
           exit={{ opacity: 0 }}
@@ -52,26 +54,26 @@ const Guitar = ({ guitar: { body, name, strings, neck, neckProfile, pickups, ima
           transition={{ delay: 0.3, ease: 'easeInOut' }}
           animate={{ opacity: 1, translateY: 20 }}>
           <motion.div whileHover={{ scale: 1.05, ease: 'easeInOut' }} transition={{ type: 'spring', duration: 1 }}>
-            <Image src={`/static/images/${image}.png`} alt={name} width='200' height='600' />
+            <ReactContentfulImage src={fields?.image?.fields?.file?.url} style={{ height: 700 }} />
           </motion.div>
         </motion.div>
       </HalfColumn>
       <HalfColumn>
         <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <p>
-            body: <strong>{body}</strong>{' '}
+            body: <strong>{fields?.body}</strong>{' '}
           </p>
           <p>
-            strings: <strong>{strings}</strong>
+            strings: <strong>{fields?.strings}</strong>
           </p>
           <p>
-            neck: <strong>{neck}</strong>
+            neck: <strong>{fields?.neck}</strong>
           </p>
           <p>
-            neck profile: <strong>{neckProfile}</strong>
+            neck profile: <strong>{fields?.neckProfile}</strong>
           </p>
           <p>
-            pickups: <strong>{pickups}</strong>
+            pickups: <strong>{fields?.pickups}</strong>
           </p>
 
           <Link href='/guitars'>
@@ -85,10 +87,35 @@ const Guitar = ({ guitar: { body, name, strings, neck, neckProfile, pickups, ima
   );
 };
 
-export async function getServerSideProps(ctx) {
-  const { id } = ctx.query;
-  const res = await axios.get(`${process.env.API_URL}/api/guitars/${id}`);
-  return { props: { guitar: res.data } };
+let client = require('contentful').createClient({
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
+});
+
+export const getStaticPaths = async () => {
+  let data = await client.getEntries({
+    content_type: 'guitar',
+  });
+
+  const paths = data.items.map((guitar) => ({
+    params: { slug: String(guitar.slug) },
+  }));
+
+  return {
+    paths,
+    fallback: true,
+  };
+};
+
+export async function getStaticProps({ params }) {
+  let data = await client.getEntries({
+    content_type: 'guitar',
+    'fields.slug': params.slug,
+  });
+
+  return {
+    props: { guitar: data.items[0].fields },
+  };
 }
 
 export default Guitar;

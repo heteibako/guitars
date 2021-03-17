@@ -11,7 +11,7 @@ const handler = nc()
   .get(async (req, res) => {
     try {
       const guitars = await Guitar.find({});
-      res.status(200).json({ success: true, data: guitars });
+      res.status(200).json(guitars);
     } catch (error) {
       console.log(error);
     }
