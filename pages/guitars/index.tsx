@@ -1,15 +1,20 @@
 import React, { FC } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
-import axios from 'axios';
 import { motion } from 'framer-motion';
+import { Card } from '../../components/Card';
+import { Heading2 } from '../../components/Heading2';
+import { Image } from '../../components/Image';
+import { Wrapper } from '../../components/Wrapper';
+
 interface GuitarProps {
   guitars: [];
 }
 interface Guitar {
   fields: {
-    name: string;
+    guitarName: string;
     slug: string;
+    image: { fields: { file: { url: string }; title: string } };
   };
 }
 
@@ -20,19 +25,19 @@ const Guitars: FC<GuitarProps> = ({ guitars }) => {
         <title>Guitar store | New guitars</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
-      <h1>This is the guitars page</h1>
-      <Link href='/guitars/add'>
-        <a>Add</a>
-      </Link>
-      <motion.ul exit={{ opacity: 0 }}>
+      <Wrapper stacked>
         {guitars.map((guitar: Guitar) => (
-          <li key={guitar.fields.slug}>
-            <Link href='/guitars/[id]' as={`/guitars/${guitar.fields.slug}`}>
-              <a> {guitar.fields.name}</a>
-            </Link>
-          </li>
+          <Card key={guitar.fields.slug}>
+            <Image src={guitar.fields.image.fields.file.url} alt={guitar.fields.image.fields.title} />
+            <Heading2 smaller>
+              <Link href='/guitars/[id]' as={`/guitars/${guitar.fields.slug}`}>
+                <a> {guitar.fields.guitarName}</a>
+              </Link>
+            </Heading2>
+          </Card>
         ))}
-      </motion.ul>
+      </Wrapper>
+      {console.log(guitars)}
     </motion.div>
   );
 };

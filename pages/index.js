@@ -15,7 +15,7 @@ export default function Home() {
         <title>My Favourite Guitars | NextJS App</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Wrapper stacked style={{ flexDirection: 'column' }}>
+      <Wrapper center stacked style={{ flexDirection: 'column' }}>
         <Heading1 centered>My Favourite Guitars</Heading1>
         <Heading2 centered>The Ultimate Collection</Heading2>
         <Button>
