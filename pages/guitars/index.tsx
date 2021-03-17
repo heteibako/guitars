@@ -30,7 +30,7 @@ const Guitars: FC<GuitarProps> = ({ guitars }) => {
           <Card key={guitar.fields.slug}>
             <Image src={guitar.fields.image.fields.file.url} alt={guitar.fields.image.fields.title} />
             <Heading2 smaller>
-              <Link href={`/guitars/ernie-ball-music-man`}>
+              <Link href='/guitars/[slug]' as={`/guitars/${guitar.fields.slug}`}>
                 <a> {guitar.fields.guitarName}</a>
               </Link>
             </Heading2>
