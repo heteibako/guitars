@@ -26,6 +26,22 @@ const Guitars: FC<GuitarProps> = ({ guitars }) => {
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <Wrapper stacked>
+        <motion.div
+          exit={{ scaleY: 1, originY: 0 }}
+          initial={{ scaleY: 1, originY: 0 }}
+          animate={{ originY: 0, scaleY: 0 }}
+          transition={{ duration: 0.3 }}
+          style={{
+            background: 'black',
+            width: '100vw',
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: 0,
+          }}
+        />
         {guitars.map((guitar: Guitar) => (
           <Card key={guitar.fields.slug}>
             <Image src={guitar.fields.image.fields.file.url} alt={guitar.fields.image.fields.title} />

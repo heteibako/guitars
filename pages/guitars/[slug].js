@@ -26,12 +26,12 @@ const Guitar = ({ guitar }) => {
   return (
     <Wrapper stacked center justify>
       <motion.div
-        exit={{ opacity: 1, height: 200, scaleY: 100 }}
-        initial={{ opacity: 1, height: '100vh', scaleY: 1 }}
+        exit={{ scaleY: 0, originY: 1 }}
+        initial={{ scaleY: 1, originY: 1 }}
+        animate={{ scaleY: 0, originY: 1 }}
         transition={{ duration: 0.3 }}
         style={{
           background: 'black',
-          height: '5vh',
           width: '100vw',
           position: 'absolute',
           top: 0,
@@ -40,7 +40,6 @@ const Guitar = ({ guitar }) => {
           right: 0,
           zIndex: -1,
         }}
-        animate={controls}
       />
       <Head>
         <title>{guitar?.fields?.guitarName} | NextJS App</title>
