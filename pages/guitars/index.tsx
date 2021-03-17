@@ -30,14 +30,13 @@ const Guitars: FC<GuitarProps> = ({ guitars }) => {
           <Card key={guitar.fields.slug}>
             <Image src={guitar.fields.image.fields.file.url} alt={guitar.fields.image.fields.title} />
             <Heading2 smaller>
-              <Link href='/guitars/[id]' as={`/guitars/${guitar.fields.slug}`}>
+              <Link href={`/guitars/ernie-ball-music-man`}>
                 <a> {guitar.fields.guitarName}</a>
               </Link>
             </Heading2>
           </Card>
         ))}
       </Wrapper>
-      {console.log(guitars)}
     </motion.div>
   );
 };

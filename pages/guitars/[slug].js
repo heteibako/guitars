@@ -11,7 +11,7 @@ import { Button } from '../../components/Button';
 import { BackdropHeading } from '../../components/BackdropHeading';
 import ReactContentfulImage from 'react-contentful-image';
 
-const Guitar = ({ guitar: { ...fields } }) => {
+const Guitar = ({ guitar }) => {
   const controls = useAnimation();
   controls.start({
     y: '100%',
@@ -43,10 +43,10 @@ const Guitar = ({ guitar: { ...fields } }) => {
         animate={controls}
       />
       <Head>
-        <title>{fields?.guitarName} | NextJS App</title>
+        <title>{guitar?.fields?.guitarName} | NextJS App</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <BackdropHeading>{fields?.guitarName}</BackdropHeading>
+      <BackdropHeading>{guitar?.fields?.guitarName}</BackdropHeading>
       <HalfColumn center>
         <motion.div
           exit={{ opacity: 0 }}
@@ -54,26 +54,26 @@ const Guitar = ({ guitar: { ...fields } }) => {
           transition={{ delay: 0.3, ease: 'easeInOut' }}
           animate={{ opacity: 1, translateY: 20 }}>
           <motion.div whileHover={{ scale: 1.05, ease: 'easeInOut' }} transition={{ type: 'spring', duration: 1 }}>
-            <ReactContentfulImage src={fields?.image?.fields?.file?.url} style={{ height: 700 }} />
+            <ReactContentfulImage src={guitar?.fields?.image?.fields?.file?.url} style={{ height: 700 }} />
           </motion.div>
         </motion.div>
       </HalfColumn>
       <HalfColumn>
         <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           <p>
-            body: <strong>{fields?.body}</strong>{' '}
+            body: <strong>{guitar?.fields?.body}</strong>{' '}
           </p>
           <p>
-            strings: <strong>{fields?.strings}</strong>
+            strings: <strong>{guitar?.fields?.strings}</strong>
           </p>
           <p>
-            neck: <strong>{fields?.neck}</strong>
+            neck: <strong>{guitar?.fields?.neck}</strong>
           </p>
           <p>
-            neck profile: <strong>{fields?.neckProfile}</strong>
+            neck profile: <strong>{guitar?.fields?.neckProfile}</strong>
           </p>
           <p>
-            pickups: <strong>{fields?.pickups}</strong>
+            pickups: <strong>{guitar?.fields?.pickups}</strong>
           </p>
 
           <Link href='/guitars'>
@@ -98,7 +98,7 @@ export const getStaticPaths = async () => {
   });
 
   const paths = data.items.map((guitar) => ({
-    params: { slug: String(guitar.slug) },
+    params: { slug: String(guitar.fields.slug) },
   }));
 
   return {
@@ -110,11 +110,11 @@ export const getStaticPaths = async () => {
 export async function getStaticProps({ params }) {
   let data = await client.getEntries({
     content_type: 'guitar',
-    'fields.slug': params.slug,
+    'fields.slug': params.slug || null,
   });
 
   return {
-    props: { guitar: data.items[0].fields },
+    props: { guitar: data.items[0] },
   };
 }
 
