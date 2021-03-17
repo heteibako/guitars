@@ -24,7 +24,7 @@ const Guitar = ({ guitar }) => {
   });
 
   return (
-    <Wrapper stacked>
+    <Wrapper stacked center justify>
       <motion.div
         exit={{ opacity: 1, height: 200, scaleY: 100 }}
         initial={{ opacity: 1, height: '100vh', scaleY: 1 }}
