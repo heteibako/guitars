@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { device } from './helpers/deviceSizes';
 
-export const Heading2 = styled.h2`
-  font-size: ${(props) => (props.smaller ? '1.6rem' : '2.2rem')};
+export const Heading1 = styled.h1`
+  font-size: 3rem;
   text-transform: uppercase;
   word-break: break-word;
-  color: #b1b1b1;
   text-align: ${(props) => (props.centered ? 'center' : 'left')};
+  color: ${(props) => (props.white ? '#fff' : '#000000')};
 `;

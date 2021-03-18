@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import { Card } from '../../components/Card';
-import { Heading2 } from '../../components/Heading2';
-import { Image } from '../../components/Image';
-import { Wrapper } from '../../components/Wrapper';
+import { Card } from '@components/Card';
+import { Heading2 } from '@components/Heading2';
+import { Image } from '@components/Image';
+import { Wrapper } from '@components/Wrapper';
 
 interface GuitarProps {
   guitars: [];

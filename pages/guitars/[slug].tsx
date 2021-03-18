@@ -7,6 +7,7 @@ import { HalfColumn } from '@components/HalfColumn';
 import { Button } from '@components/Button';
 import { BackdropHeading } from '@components/BackdropHeading';
 import ReactContentfulImage from 'react-contentful-image';
+import { Heading1 } from '@components/Heading1';
 
 const Guitar = ({ guitar }) => {
   const controls = useAnimation();
@@ -20,65 +21,70 @@ const Guitar = ({ guitar }) => {
   });
 
   return (
-    <Wrapper stacked center justify>
-      <motion.div
-        exit={{ scaleY: 0, originY: 1 }}
-        initial={{ scaleY: 1, originY: 1 }}
-        animate={{ scaleY: 0, originY: 1 }}
-        transition={{ duration: 0.3 }}
-        style={{
-          background: 'black',
-          width: '100vw',
-          position: 'absolute',
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-          zIndex: -1,
-        }}
-      />
-      <Head>
-        <title>{guitar?.fields?.guitarName} | NextJS App</title>
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-      <BackdropHeading>{guitar?.fields?.guitarName}</BackdropHeading>
-      <HalfColumn center>
+    <>
+      <Wrapper stacked center justify>
         <motion.div
-          exit={{ opacity: 0 }}
-          initial={{ opacity: 0 }}
-          transition={{ delay: 0.3, ease: 'easeInOut' }}
-          animate={{ opacity: 1, translateY: 20 }}>
-          <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.3, ease: 'easeInOut' }}>
-            <ReactContentfulImage src={guitar?.fields?.image?.fields?.file?.url} style={{ height: 700 }} />
+          exit={{ scaleY: 0, originY: 1 }}
+          initial={{ scaleY: 1, originY: 1 }}
+          animate={{ scaleY: 0, originY: 1 }}
+          transition={{ duration: 0.3 }}
+          style={{
+            background: 'black',
+            width: '100vw',
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            zIndex: -1,
+          }}
+        />
+        <Head>
+          <title>{guitar?.fields?.guitarName} | NextJS App</title>
+          <link rel='icon' href='/favicon.ico' />
+        </Head>
+        <BackdropHeading>{guitar?.fields?.guitarName}</BackdropHeading>
+        <HalfColumn center>
+          <motion.div
+            exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }}
+            transition={{ delay: 0.3, ease: 'easeInOut' }}
+            animate={{ opacity: 1, translateY: 20 }}>
+            <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.3, ease: 'easeInOut' }}>
+              <ReactContentfulImage src={guitar?.fields?.image?.fields?.file?.url} style={{ height: 700 }} />
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </HalfColumn>
-      <HalfColumn>
-        <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-          <p>
-            body: <strong>{guitar?.fields?.body}</strong>{' '}
-          </p>
-          <p>
-            strings: <strong>{guitar?.fields?.strings}</strong>
-          </p>
-          <p>
-            neck: <strong>{guitar?.fields?.neck}</strong>
-          </p>
-          <p>
-            neck profile: <strong>{guitar?.fields?.neckProfile}</strong>
-          </p>
-          <p>
-            pickups: <strong>{guitar?.fields?.pickups}</strong>
-          </p>
+        </HalfColumn>
+        <HalfColumn>
+          <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <p>
+              body: <strong>{guitar?.fields?.body}</strong>{' '}
+            </p>
+            <p>
+              strings: <strong>{guitar?.fields?.strings}</strong>
+            </p>
+            <p>
+              neck: <strong>{guitar?.fields?.neck}</strong>
+            </p>
+            <p>
+              neck profile: <strong>{guitar?.fields?.neckProfile}</strong>
+            </p>
+            <p>
+              pickups: <strong>{guitar?.fields?.pickups}</strong>
+            </p>
 
-          <Link href='/guitars'>
-            <Button>
-              <a>Back</a>
-            </Button>
-          </Link>
-        </motion.div>
-      </HalfColumn>
-    </Wrapper>
+            <Link href='/guitars'>
+              <Button>
+                <a>Back</a>
+              </Button>
+            </Link>
+          </motion.div>
+        </HalfColumn>
+      </Wrapper>
+      <Wrapper background center>
+        <Heading1 white>Test</Heading1>
+      </Wrapper>
+    </>
   );
 };
 

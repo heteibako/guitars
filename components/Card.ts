@@ -12,5 +12,5 @@ export const Card = styled.div`
   min-width: 4em;
   border-radius: 10px;
   background: #ffffff;
-  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+  box-shadow: 11px 11px 22px #ebebeb, -11px -11px 22px #ffffff;
 `;

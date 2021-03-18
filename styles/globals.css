@@ -1,15 +1,47 @@
+@font-face {
+  font-family: 'noir-bold';
+  src: url('../assets/fonts/NoirPro-Bold.eot');
+  src: local('noir-bold'), local('noir-bold'),
+    url('../assets/fonts/NoirPro-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/NoirPro-Bold.woff2') format('woff2'), url('../assets/fonts/NoirPro-Bold.woff') format('woff');
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'noir-italic';
+  src: url('../assets/fonts/NoirPro-Italic.eot');
+  src: local('noir-italic'), local('noir-italic'),
+    url('../assets/fonts/NoirPro-Italic.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/NoirPro-Italic.woff2') format('woff2'),
+    url('../assets/fonts/NoirPro-Italic.woff') format('woff');
+
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'noir';
+  src: url('../assets/fonts/NoirPro-Light.eot');
+  src: local('noir'), local('noir'), url('../assets/fonts/NoirPro-Light.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/NoirPro-Light.woff2') format('woff2'), url('../assets/fonts/NoirPro-Light.woff') format('woff');
+
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,
 body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-    Helvetica Neue, sans-serif;
 }
 *,
 *::after,
 *::before {
   box-sizing: border-box;
+  font-family: 'noir', sans-serif;
 }
 
 a {
@@ -19,4 +51,17 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+p {
+  font-weight: 400;
 }
