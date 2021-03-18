@@ -6,6 +6,7 @@ import { Card } from '@components/Card';
 import { Heading2 } from '@components/Heading2';
 import { Image } from '@components/Image';
 import { Wrapper } from '@components/Wrapper';
+import resolveResponse from 'contentful-resolve-response';
 
 interface GuitarProps {
   guitars: [];
@@ -44,7 +45,6 @@ const Guitars: FC<GuitarProps> = ({ guitars }) => {
         />
         {guitars.map((guitar: Guitar) => (
           <Card key={guitar.fields.slug}>
-            {console.log(guitar.fields)}
             <Image src={guitar.fields.image.fields.file.url} alt={guitar.fields.image.fields.title} />
             <Heading2 smaller>
               <Link href='/guitars/[slug]' as={`/guitars/${guitar.fields.slug}`}>
@@ -69,7 +69,7 @@ export async function getStaticProps(ctx) {
   });
 
   return {
-    props: { guitars: data.items },
+    props: { guitars: resolveResponse(data) },
   };
 }
 

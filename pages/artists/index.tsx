@@ -6,6 +6,7 @@ import { Card } from '@components/Card';
 import { Heading2 } from '@components/Heading2';
 import { Image } from '@components/Image';
 import { Wrapper } from '@components/Wrapper';
+import resolveResponse from 'contentful-resolve-response';
 
 interface ArtistProps {
   artists: [];
@@ -43,8 +44,6 @@ const Artists: FC<ArtistProps> = ({ artists }) => {
         />
         {artists.map((artist: Artist) => (
           <Card key={artist.fields.slug}>
-            {console.log(artist.fields)}
-
             <Heading2 smaller>
               <Link href='/artists/[slug]' as={`/artists/${artist.fields.slug}`}>
                 <a> {artist.fields.name}</a>
@@ -68,7 +67,7 @@ export async function getStaticProps(ctx) {
   });
 
   return {
-    props: { artists: data.items },
+    props: { artists: resolveResponse(data) },
   };
 }
 

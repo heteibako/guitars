@@ -1,26 +1,24 @@
 import React from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import resolveResponse from 'contentful-resolve-response';
 import { Wrapper } from '@components/Wrapper';
 
-const Artist = ({ artist }) => {
-  const controls = useAnimation();
-  controls.start({
-    y: '100%',
-    backgroundColor: '#000',
-    transition: { duration: 0.5, ease: 'easeOut' },
-    transitionEnd: {
-      height: 0,
-    },
-  });
+interface Artist {
+  fields: { slug: string };
+}
 
+interface Guitar extends Artist {
+  fields: { slug: string; guitarName: string };
+}
+
+const Artist = ({ artist }) => {
   return (
     <>
       <Wrapper stacked center justify style={{ height: '100vh' }}>
         <h1>{artist.fields.name}</h1>
       </Wrapper>
       <Wrapper stacked center justify>
-        {artist.fields.guitars.map((guitar) => (
-          <h2>{guitar.fields.guitarName}</h2>
+        {artist.fields.guitars.map((guitar: Guitar) => (
+          <h2 key={guitar.fields.slug}>{guitar.fields.guitarName}</h2>
         ))}
       </Wrapper>
     </>
@@ -37,7 +35,7 @@ export const getStaticPaths = async () => {
     content_type: 'artist',
   });
 
-  const paths = data.items.map((artist) => ({
+  const paths = data.items.map((artist: Artist) => ({
     params: { slug: String(artist.fields.slug) },
   }));
 
@@ -54,7 +52,7 @@ export async function getStaticProps({ params }) {
   });
 
   return {
-    props: { artist: data.items[0] },
+    props: { artist: resolveResponse(data)[0] },
   };
 }
 

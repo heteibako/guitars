@@ -8,6 +8,7 @@ import { Button } from '@components/Button';
 import { BackdropHeading } from '@components/BackdropHeading';
 import ReactContentfulImage from 'react-contentful-image';
 import { Heading1 } from '@components/Heading1';
+import resolveResponse from 'contentful-resolve-response';
 
 const Guitar = ({ guitar }) => {
   const controls = useAnimation();
@@ -22,6 +23,7 @@ const Guitar = ({ guitar }) => {
 
   return (
     <>
+      {console.log(guitar)}
       <Wrapper stacked center justify>
         <motion.div
           exit={{ scaleY: 0, originY: 1 }}
@@ -115,7 +117,7 @@ export async function getStaticProps({ params }) {
   });
 
   return {
-    props: { guitar: data.items[0] },
+    props: { guitar: resolveResponse(data)[0] },
   };
 }
 
