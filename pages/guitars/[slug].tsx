@@ -1,14 +1,11 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Head from 'next/head';
-import axios from 'axios';
 import { motion, useAnimation } from 'framer-motion';
-import { Wrapper } from '../../components/Wrapper';
-import { HalfColumn } from '../../components/HalfColumn';
-import Image from 'next/image';
-import { Button } from '../../components/Button';
-import { BackdropHeading } from '../../components/BackdropHeading';
+import { Wrapper } from '@components/Wrapper';
+import { HalfColumn } from '@components/HalfColumn';
+import { Button } from '@components/Button';
+import { BackdropHeading } from '@components/BackdropHeading';
 import ReactContentfulImage from 'react-contentful-image';
 
 const Guitar = ({ guitar }) => {
@@ -16,7 +13,6 @@ const Guitar = ({ guitar }) => {
   controls.start({
     y: '100%',
     backgroundColor: '#000',
-    transform: 45,
     transition: { duration: 0.5, ease: 'easeOut' },
     transitionEnd: {
       height: 0,
@@ -52,7 +48,7 @@ const Guitar = ({ guitar }) => {
           initial={{ opacity: 0 }}
           transition={{ delay: 0.3, ease: 'easeInOut' }}
           animate={{ opacity: 1, translateY: 20 }}>
-          <motion.div whileHover={{ scale: 1.05, ease: 'easeInOut' }} transition={{ type: 'spring', duration: 1 }}>
+          <motion.div whileHover={{ scale: 1.03 }} transition={{ duration: 0.3, ease: 'easeInOut' }}>
             <ReactContentfulImage src={guitar?.fields?.image?.fields?.file?.url} style={{ height: 700 }} />
           </motion.div>
         </motion.div>
