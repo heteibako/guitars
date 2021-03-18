@@ -65,3 +65,11 @@ h5 {
 p {
   font-weight: 400;
 }
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

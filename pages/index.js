@@ -9,7 +9,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <motion.div exit={{ opacity: 0 }}>
+    <motion.div className='container' exit={{ opacity: 0 }}>
       <Head>
         <title>My Favourite Guitars | NextJS App</title>
         <link rel='icon' href='/favicon.ico' />
