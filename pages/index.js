@@ -9,21 +9,23 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
-    <motion.div className='container' exit={{ opacity: 0 }}>
+    <>
       <Head>
         <title>My Favourite Guitars | NextJS App</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <Wrapper center stacked style={{ flexDirection: 'column' }}>
-        <Heading1 centered>My Favourite Guitars</Heading1>
-        <Heading2 centered>The Ultimate Collection</Heading2>
-        <Button>
-          <Link href='/guitars'>
-            <a>Guitars</a>
-          </Link>
-        </Button>
-      </Wrapper>
-      <Footer>Footer</Footer>
-    </motion.div>
+      <motion.div className='container' exit={{ opacity: 0 }}>
+        <Wrapper center stacked style={{ flexDirection: 'column' }}>
+          <Heading1 centered>My Favourite Guitars</Heading1>
+          <Heading2 centered>The Ultimate Collection</Heading2>
+          <Button>
+            <Link href='/guitars'>
+              <a>Guitars</a>
+            </Link>
+          </Button>
+        </Wrapper>
+        <Footer>Footer</Footer>
+      </motion.div>
+    </>
   );
 }

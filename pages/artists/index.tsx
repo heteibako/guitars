@@ -7,18 +7,17 @@ import { Heading2 } from '@components/Heading2';
 import { Image } from '@components/Image';
 import { Wrapper } from '@components/Wrapper';
 
-interface GuitarProps {
-  guitars: [];
+interface ArtistProps {
+  artists: [];
 }
-interface Guitar {
+interface Artist {
   fields: {
-    guitarName: string;
+    name: string;
     slug: string;
-    image: { fields: { file: { url: string }; title: string } };
   };
 }
 
-const Guitars: FC<GuitarProps> = ({ guitars }) => {
+const Artists: FC<ArtistProps> = ({ artists }) => {
   return (
     <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Head>
@@ -42,13 +41,13 @@ const Guitars: FC<GuitarProps> = ({ guitars }) => {
             zIndex: 0,
           }}
         />
-        {guitars.map((guitar: Guitar) => (
-          <Card key={guitar.fields.slug}>
-            {console.log(guitar.fields)}
-            <Image src={guitar.fields.image.fields.file.url} alt={guitar.fields.image.fields.title} />
+        {artists.map((artist: Artist) => (
+          <Card key={artist.fields.slug}>
+            {console.log(artist.fields)}
+
             <Heading2 smaller>
-              <Link href='/guitars/[slug]' as={`/guitars/${guitar.fields.slug}`}>
-                <a> {guitar.fields.guitarName}</a>
+              <Link href='/artists/[slug]' as={`/artists/${artist.fields.slug}`}>
+                <a> {artist.fields.name}</a>
               </Link>
             </Heading2>
           </Card>
@@ -65,12 +64,12 @@ let client = require('contentful').createClient({
 
 export async function getStaticProps(ctx) {
   let data = await client.getEntries({
-    content_type: 'guitar',
+    content_type: 'artist',
   });
 
   return {
-    props: { guitars: data.items },
+    props: { artists: data.items },
   };
 }
 
-export default Guitars;
+export default Artists;
